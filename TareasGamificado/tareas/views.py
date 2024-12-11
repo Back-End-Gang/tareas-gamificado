@@ -26,7 +26,7 @@ def crear_tarea(request):
             usuario=request.user
         )
         return redirect('listar_tareas')
-    return render(request, 'crear.html', {'logros': logros})
+    return render(request, 'tareas/crear.html', {'logros': logros})
 
 
 @login_required
