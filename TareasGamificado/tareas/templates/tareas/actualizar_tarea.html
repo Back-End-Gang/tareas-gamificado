@@ -4,29 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Tarea</title>
+    <!-- Agregar Bulma desde un CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            padding: 40px 0;
+        }
+        .container {
+            max-width: 600px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Actualizar tarea</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        <label for="titulo">Título</label>
-        <input type="text" name="titulo" id="titulo" value="{{ tarea.titulo }}" required><br>
+    <div class="container">
+        <h1 class="title has-text-centered">Actualizar tarea</h1>
 
-        <label for="descripcion">Descripción</label>
-        <textarea name="descripcion" id="descripcion" required>{{ tarea.descripcion }}</textarea><br>
+        <div class="box">
+            <form method="POST">
+                {% csrf_token %}
 
-        <label for="logro">Logro asociado</label>
-        <select name="logro" id="logro">
-            <option value="">-- Ninguno --</option>
-            {% for logro in logros %}
-                <option value="{{ logro.id }}" {% if logro.id == tarea.logro.id %}selected{% endif %}>{{ logro.nombre }}</option>
-            {% endfor %}
-        </select><br>
+                <div class="field">
+                    <label for="titulo" class="label">Título</label>
+                    <div class="control">
+                        <input class="input" type="text" name="titulo" id="titulo" value="{{ tarea.titulo }}" required>
+                    </div>
+                </div>
 
-        <button type="submit">Actualizar tarea</button>
-    </form>
+                <div class="field">
+                    <label for="descripcion" class="label">Descripción</label>
+                    <div class="control">
+                        <textarea class="textarea" name="descripcion" id="descripcion" required>{{ tarea.descripcion }}</textarea>
+                    </div>
+                </div>
 
-    <p><a href="{% url 'listar_tareas' %}">Volver a mis tareas</a></p>
+                <div class="field">
+                    <label for="logro" class="label">Logro asociado</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="logro" id="logro">
+                                <option value="">-- Ninguno --</option>
+                                {% for logro in logros %}
+                                    <option value="{{ logro.id }}" {% if logro.id == tarea.logro.id %}selected{% endif %}>{{ logro.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Actualizar tarea</button>
+                    </div>
+                    <div class="control">
+                        <a class="button is-light" href="{% url 'listar_tareas' %}">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
