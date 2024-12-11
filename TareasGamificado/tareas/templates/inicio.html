@@ -2,14 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
+    <!-- Incluir Bulma desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Bienvenido al Sistema de Tareas Gamificado</h1>
-    <p>Selecciona una opción:</p>
-    <ul>
-        <li><a href="{% url 'listar_tareas' %}">Ver mis tareas</a></li>
-        <li><a href="{% url 'crear_tarea' %}">Crear una tarea</a></li>
-    </ul>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Bienvenido al Sistema de Tareas Gamificado</h1>
+            <p class="subtitle has-text-centered">Selecciona una opción:</p>
+
+            <div class="buttons is-centered">
+                <a href="{% url 'listar_tareas' %}" class="button is-primary is-large">Ver mis tareas</a>
+                <a href="{% url 'crear_tarea' %}" class="button is-success is-large">Crear una tarea</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incluir el script de Bulma -->
+    <script src="https://cdn.jsdelivr.net/npm/bulma@0.9.4/js/bulma.min.js"></script>
 </body>
 </html>
