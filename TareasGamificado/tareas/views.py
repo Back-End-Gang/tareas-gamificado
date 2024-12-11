@@ -3,30 +3,32 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Tarea
 from logros.models import Logro
+from usuarios.models import Usuario
 
 def pagina_inicio(request):
     return render(request, 'inicio.html')  # Un template llamado inicio.html
 
 @login_required
 def crear_tarea(request):
-    logros = Logro.objects.all()
+    usuarios = Usuario.objects.all()
     if request.method == 'POST':
-        titulo = request.POST.get('titulo')  # Cambié "nombre" a "titulo" para coincidir con el modelo
+        titulo = request.POST.get('titulo')
         descripcion = request.POST.get('descripcion')
         estado = request.POST.get('estado')
         puntos = request.POST.get('puntos')
-        logro_id = request.POST.get('logro')
-        logro = Logro.objects.get(id=logro_id) if logro_id else None
+        usuario_id = request.POST.get('usuario')
+        usuario = Usuario.objects.get(id=usuario_id) if usuario_id else None
 
         # Asociar la tarea con el usuario autenticado
         Tarea.objects.create(
             titulo=titulo,
             descripcion=descripcion,
-            logro=logro,
-            usuario=request.user
+            estado=estado,
+            puntos=puntos,
+            usuario=usuario,
         )
         return redirect('listar_tareas')
-    return render(request, 'tareas/crear.html', {'logros': logros})
+    return render(request, 'tareas/crear.html', {'usuarios': usuarios})
 
 
 @login_required
