@@ -1,5 +1,6 @@
 from django.db import models
-from .models import Usuario
+from usuarios.models import Usuario
+
 # Create your models here.
 
 class Tarea(models.Model):

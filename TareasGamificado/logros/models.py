@@ -1,5 +1,6 @@
 from django.db import models
-from .models import Usuario
+from usuarios.models import Usuario
+
 # Create your models here.
 class Logro(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.SET_NULL, related_name="logros")
