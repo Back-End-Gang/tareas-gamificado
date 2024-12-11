@@ -23,7 +23,11 @@
                 <tr>
                     <td>{{ tarea.titulo }}</td>
                     <td>{{ tarea.descripcion }}</td>
-                    <td>{{ tarea.logro.nombre if tarea.logro else "Ninguno" }}</td>
+                    <td>{{% if tarea.logro %}
+                        {{ tarea.logro.nombre }}
+                    {% else %}
+                        Ninguno
+                    {% endif %}}</td>
                     <td>{{ tarea.estado }}</td>
                     <td>
                         <a href="{% url 'actualizar_tarea' tarea.id %}">Actualizar</a> |
