@@ -37,7 +37,8 @@
                         <th>Descripción</th>
                         <th>Logro</th>
                         <th>Estado</th>
-                        <th>Acciones</th>
+                        <th>Puntos</th>
+                        <th>Usuario (Falta implementar)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,6 +54,7 @@
                                 {% endif %}
                             </td>
                             <td>{{ tarea.estado }}</td>
+                            <td>{{ tarea.puntos }}</td>
                             <td>
                                 <a class="button is-info is-small" href="{% url 'actualizar_tarea' tarea.id %}">Actualizar</a>
                                 <a class="button is-danger is-small" href="{% url 'eliminar_tarea' tarea.id %}">Eliminar</a>
