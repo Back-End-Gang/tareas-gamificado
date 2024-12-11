@@ -36,7 +36,7 @@ def listar_tareas(request):
     paginator = Paginator(tareas, 10)  # 10 tareas por página
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'listar_tareas.html', {'page_obj': page_obj})
+    return render(request, 'tareas/listar_tareas.html', {'page_obj': page_obj})
 
 
 @login_required
@@ -51,7 +51,7 @@ def actualizar_tarea(request, id):
 
         tarea.save()
         return redirect('listar_tareas')
-    return render(request, 'actualizar_tarea.html', {'tarea': tarea, 'logros': logros})
+    return render(request, 'tareas/actualizar_tarea.html', {'tarea': tarea, 'logros': logros})
 
 
 @login_required
@@ -60,4 +60,4 @@ def eliminar_tarea(request, id):
     if request.method == 'POST':
         tarea.delete()
         return redirect('listar_tareas')
-    return render(request, 'eliminar_tarea.html', {'tarea': tarea})
+    return render(request, 'tareas/eliminar_tarea.html', {'tarea': tarea})
