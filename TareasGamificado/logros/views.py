@@ -6,7 +6,7 @@ from .models import Logro
 
 def listar_logros(request):
     logros = Logro.objects.all()
-    paginator = Paginator(logros, 10)  # 5 tareas por página
+    paginator = Paginator(logros, 10)  # 5 logros por página
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'listar_logros.html', {'page_obj': page_obj})
