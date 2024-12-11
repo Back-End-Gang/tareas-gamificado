@@ -8,7 +8,7 @@ from .models import Usuario
 @login_required
 def listar_usuarios(request):
     usuarios = Usuario.objects.all()
-    paginator = Paginator(usuarios, 5)  # 5 tareas por página
+    paginator = Paginator(usuarios, 5)  # 5 usuarios por página
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'listar_usuarios.html', {'page_obj': page_obj})
