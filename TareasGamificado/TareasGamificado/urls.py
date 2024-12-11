@@ -15,9 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from tareas.views import crear_tarea, listar_tareas, actualizar_tarea, eliminar_tarea
+from tareas.views import crear_tarea, listar_tareas, actualizar_tarea, eliminar_tarea, pagina_inicio
 
 urlpatterns = [
+    path('', pagina_inicio, name='inicio'),  # Página de inicio
     path('crear/', crear_tarea, name='crear_tarea'),
     path('listar/', listar_tareas, name='listar_tareas'),
     path('actualizar/<int:id>/', actualizar_tarea, name='actualizar_tarea'),
