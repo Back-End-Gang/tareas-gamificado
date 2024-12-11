@@ -13,6 +13,8 @@ def crear_tarea(request):
     if request.method == 'POST':
         titulo = request.POST.get('titulo')  # Cambié "nombre" a "titulo" para coincidir con el modelo
         descripcion = request.POST.get('descripcion')
+        estado = request.POST.get('estado')
+        puntos = request.POST.get('puntos')
         logro_id = request.POST.get('logro')
         logro = Logro.objects.get(id=logro_id) if logro_id else None
 
