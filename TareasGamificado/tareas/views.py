@@ -4,6 +4,9 @@ from django.core.paginator import Paginator
 from .models import Tarea
 from logros.models import Logro
 
+def pagina_inicio(request):
+    return render(request, 'inicio.html')  # Un template llamado inicio.html
+
 @login_required
 def crear_tarea(request):
     logros = Logro.objects.all()
